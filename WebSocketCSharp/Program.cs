@@ -16,15 +16,24 @@ class MainVB
         string ip = "127.0.0.1";
         ushort port = 8888;
         ServerWebSocket server = new ServerWebSocket(ip, port);
+        server.OnReceive += Server_OnReceive;
         server.Start();
         Console.WriteLine("Server has started on {0}:{1}", ip, port);
 
         Console.ReadLine();
     }
+
+    private static void Server_OnReceive(string data)
+    {
+        Console.WriteLine("Dữ liệu nhận được là {0}", data);
+    }
 }
 
 public class ServerWebSocket
 {
+    public delegate void ReceiveHandle(string data);
+    public event ReceiveHandle OnReceive;
+
     private List<TcpClient> Clients = new List<TcpClient>();
     private string Ip;
     private ushort Port;
@@ -38,9 +47,10 @@ public class ServerWebSocket
             while (true)
             {
                 TcpClient client = server.AcceptTcpClient();
-                Thread session = new Thread(() =>
+                Thread session = new Thread(async () =>
                 {
                     Connect(client);
+                    await Receive(client);
                 }
 );
                 session.Start();
@@ -107,7 +117,10 @@ public class ServerWebSocket
             byte[] bytes = Read(ref stream);
 
             string s = Encoding.UTF8.GetString(bytes);
-
+            if (OnReceive != null)
+            {
+                OnReceive(s);
+            }
             // Decode Message
             // Dim decoded As Byte() = Decode(bytes)
             // Console.WriteLine("Client send {0} bytes: {1}", bytes.LongLength, Encoding.UTF8.GetString(decoded))
@@ -161,7 +174,7 @@ public class ServerWebSocket
 
         send = send.Concat(actualLength).ToArray();
         send = send.Concat(data).ToArray();
-        stream.Write(send,0,send.Length);
+        stream.Write(send, 0, send.Length);
     }
 
     public byte[] Decode(ref byte[] bytes)
@@ -173,12 +186,12 @@ public class ServerWebSocket
 
         if (msglen == 126)
         {
-            msglen = BitConverter.ToUInt16(new byte[] { bytes[3], bytes[2] },0);
+            msglen = BitConverter.ToUInt16(new byte[] { bytes[3], bytes[2] }, 0);
             offset = 4;
         }
         else if (msglen == 127)
         {
-            msglen = BitConverter.ToInt32(new byte[] { bytes[9], bytes[8], bytes[7], bytes[6], bytes[5], bytes[4], bytes[3], bytes[2] },0);
+            msglen = BitConverter.ToInt32(new byte[] { bytes[9], bytes[8], bytes[7], bytes[6], bytes[5], bytes[4], bytes[3], bytes[2] }, 0);
             offset = 10;
         }
 
