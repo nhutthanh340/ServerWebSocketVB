@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Threading;
-
+using Microsoft.VisualBasic;
 class MainVB
 {
     public static void Main()
@@ -60,10 +60,11 @@ public class ServerWebSocket
 
         using (MemoryStream memoryStream = new MemoryStream())
         {
+            int count = 0;
             do
             {
-                stream.Read(data);
-                memoryStream.Write(data);
+                count = stream.Read(data, 0, data.Length);
+                memoryStream.Write(data, 0, count);
             }
             while (stream.DataAvailable);
 
@@ -114,14 +115,14 @@ public class ServerWebSocket
             // Send data from server to client
             byte[] data = Repeat(49, 5242880);
 
-            Send(ref stream, ref data);
+            Send(stream, ref data);
         }
     }
 
     public void BroadCast(ref byte[] data)
     {
         foreach (var client in Clients)
-            Send(ref client.GetStream(), ref data);
+            Send(client.GetStream(), ref data);
     }
     private void HandShaking(ref NetworkStream stream, ref string s)
     {
@@ -132,20 +133,20 @@ public class ServerWebSocket
         byte[] response = Encoding.UTF8.GetBytes("HTTP/1.1 101 Switching Protocols" + Constants.vbCrLf + "Connection: Upgrade" + Constants.vbCrLf + "Upgrade: websocket" + Constants.vbCrLf + "Sec-WebSocket-Accept: " + swkaSha1Base64 + Constants.vbCrLf + Constants.vbCrLf);
         stream.Write(response, 0, response.Length);
     }
-    public void Send(ref NetworkStream stream, ref byte[] data)
+    public void Send(NetworkStream stream, ref byte[] data)
     {
         byte[] send = new byte[] { 129 };
         byte[] actualLength;
 
         if (data.Length <= 125)
-            actualLength = new byte[] { data.Length };
+            actualLength = new byte[] { (byte)data.Length };
         else
         {
             byte[] PayLoadLength;
             if (data.Length <= 65535)
             {
                 PayLoadLength = new byte[] { 126 };
-                short Length = data.Length;
+                short Length = (short)data.Length;
                 actualLength = BitConverter.GetBytes(Length);
             }
             else
@@ -160,7 +161,7 @@ public class ServerWebSocket
 
         send = send.Concat(actualLength).ToArray();
         send = send.Concat(data).ToArray();
-        stream.Write(send);
+        stream.Write(send,0,send.Length);
     }
 
     public byte[] Decode(ref byte[] bytes)
@@ -172,12 +173,12 @@ public class ServerWebSocket
 
         if (msglen == 126)
         {
-            msglen = BitConverter.ToUInt16(new byte[] { bytes[3], bytes[2] });
+            msglen = BitConverter.ToUInt16(new byte[] { bytes[3], bytes[2] },0);
             offset = 4;
         }
         else if (msglen == 127)
         {
-            msglen = BitConverter.ToUInt64(new byte[] { bytes[9], bytes[8], bytes[7], bytes[6], bytes[5], bytes[4], bytes[3], bytes[2] });
+            msglen = BitConverter.ToInt32(new byte[] { bytes[9], bytes[8], bytes[7], bytes[6], bytes[5], bytes[4], bytes[3], bytes[2] },0);
             offset = 10;
         }
 
