@@ -1,0 +1,11 @@
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketVB\obj\Debug\netcoreapp3.0\WebSocketVB.vbprojAssemblyReference.cache
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketVB\obj\Debug\netcoreapp3.0\WebSocketVB.AssemblyInfoInputs.cache
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketVB\obj\Debug\netcoreapp3.0\WebSocketVB.AssemblyInfo.vb
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketVB\bin\Debug\netcoreapp3.0\WebSocketVB.exe
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketVB\bin\Debug\netcoreapp3.0\WebSocketVB.deps.json
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketVB\bin\Debug\netcoreapp3.0\WebSocketVB.runtimeconfig.json
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketVB\bin\Debug\netcoreapp3.0\WebSocketVB.runtimeconfig.dev.json
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketVB\bin\Debug\netcoreapp3.0\WebSocketVB.dll
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketVB\bin\Debug\netcoreapp3.0\WebSocketVB.pdb
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketVB\obj\Debug\netcoreapp3.0\WebSocketVB.dll
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketVB\obj\Debug\netcoreapp3.0\WebSocketVB.pdb

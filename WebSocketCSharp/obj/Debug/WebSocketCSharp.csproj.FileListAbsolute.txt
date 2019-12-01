@@ -1,0 +1,16 @@
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\bin\Debug\WebSocketCSharp.exe.config
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\bin\Debug\WebSocketCSharp.exe
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\bin\Debug\WebSocketCSharp.pdb
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\bin\Debug\log4net.dll
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\bin\Debug\SuperSocket.Common.dll
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\bin\Debug\SuperSocket.Facility.dll
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\bin\Debug\SuperSocket.SocketBase.dll
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\bin\Debug\SuperSocket.SocketEngine.dll
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\bin\Debug\SuperWebSocket.dll
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\bin\Debug\log4net.xml
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\obj\Debug\WebSocketCSharp.csprojAssemblyReference.cache
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\obj\Debug\WebSocketCSharp.csproj.CopyComplete
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\obj\Debug\WebSocketCSharp.exe
+C:\Users\Thanh\source\repos\WebSocketVB\WebSocketCSharp\obj\Debug\WebSocketCSharp.pdb
